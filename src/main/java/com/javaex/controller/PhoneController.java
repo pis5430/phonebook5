@@ -131,6 +131,19 @@ public class PhoneController {
 			return "modifyForm";
 		}
 		
+		
+		@RequestMapping(value="/modify", method= {RequestMethod.GET ,RequestMethod.POST})
+		public String modify(@ModelAttribute PersonVo personVo) {			
+			System.out.println("modify");
+			
+			System.out.println(personVo.toString());
+			
+			phoneDao.personUpdate(personVo); //정보 수정 
+
+			return "redirect:/phone/list";			
+		}
+		
+		
 		/*
 			
 		//수정 -->modify

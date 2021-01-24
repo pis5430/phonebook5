@@ -67,6 +67,19 @@
 			where person_id = #{person_id}
 		]]>	
 	</select>
+	
+	
+	<!--1명의 정보 수정 -->
+	<update id="update" parameterType="int">
+		<![CDATA[
+			update person
+			set name = #{name},
+		  		hp = #{hp},
+		        company = #{company}
+			where person_id = #{person_id}			
+		]]>
+	
+	</update>
 
 	
 

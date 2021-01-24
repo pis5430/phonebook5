@@ -38,7 +38,7 @@ public class PhoneDao {
 		
 	}
 	
-	
+	//등록
 	public void personInsert(PersonVo personVo) {
 		
 		System.out.println("PhoneDao : personVo "+personVo);
@@ -58,6 +58,12 @@ public class PhoneDao {
 	}
 	
 	//수정
-
+	public void personUpdate(PersonVo personVo) {
+		System.out.println("dao: personUpdate()" + personVo);
+		
+		int count = sqlSession.update("phonebook.update",personVo);
+		System.out.println(count + "건이 수정되었습니다. ");
+	
+	}
 
 }
