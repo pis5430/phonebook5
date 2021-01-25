@@ -1,6 +1,8 @@
 package com.javaex.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -131,6 +133,24 @@ public class PhoneController {
 			return "modifyForm";
 		}
 		
+		//수정폼2 -->modifyForm		
+		@RequestMapping(value="/modifyForm2", method= {RequestMethod.GET ,RequestMethod.POST})
+		public String modifyForm2(Model model,
+								@RequestParam("id") int id) {  //이렇게 써도 되는지? 
+			
+			System.out.println("modifyForm2");	
+			System.out.println(id);
+			
+			//id로 한사람의 정보 불러오기 -->map으로 해보기
+			Map<String , Object> personMap = phoneDao.getPerson2(id);			
+			System.out.println("수정할 사람의 정보 : "+personMap);
+			
+			//date전달.
+			model.addAttribute("pMap", personMap);
+			
+			return "modifyForm2";
+		}
+		
 		
 		@RequestMapping(value="/modify", method= {RequestMethod.GET ,RequestMethod.POST})
 		public String modify(@ModelAttribute PersonVo personVo) {			
@@ -139,6 +159,32 @@ public class PhoneController {
 			System.out.println(personVo.toString());
 			
 			phoneDao.personUpdate(personVo); //정보 수정 
+
+			return "redirect:/phone/list";			
+		}
+		
+		@RequestMapping(value="/modify2", method= {RequestMethod.GET ,RequestMethod.POST})
+		public String modify2(@RequestParam("name") String name,
+					         @RequestParam("hp") String hp,
+						     @RequestParam("company") String company,
+						     @RequestParam("person_id") int id) {			
+			
+			System.out.println("modify2 : "+name + "," + hp + "," + company + "," + id );
+			
+			// vo --> 대신 map(vo생산자가 없는경우)
+			//PersonVo personVo = new PersonVo(id,name,hp,company);
+			
+			Map<String, Object> personMap = new HashMap<String,Object>();
+			//System.out.println(personVo.toString());
+			
+			personMap.put("id", id);
+			personMap.put("name", name);
+			personMap.put("hp", hp);
+			personMap.put("company", company);
+			
+			System.out.println(personMap.toString());
+			
+			//phoneDao.personUpdate2(id,name,hp,company); //정보 수정 
 
 			return "redirect:/phone/list";			
 		}
