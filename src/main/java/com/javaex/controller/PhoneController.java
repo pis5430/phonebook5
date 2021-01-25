@@ -184,7 +184,8 @@ public class PhoneController {
 			
 			System.out.println(personMap.toString());
 			
-			//phoneDao.personUpdate2(id,name,hp,company); //정보 수정 
+			int count = phoneDao.personUpdate2(id,name,hp,company); //정보 수정 
+			
 
 			return "redirect:/phone/list";			
 		}

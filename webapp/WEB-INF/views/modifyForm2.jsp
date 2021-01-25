@@ -22,7 +22,6 @@
 		회사(company) : <input type="text" name="company" value="${requestScope.pMap.COMPANY}"> <br>
 		
 		 <input type="hidden" name="person_id" value="${requestScope.pMap.PERSON_ID }">
-		 <input type="hidden" name="action" value="update"> 
 	<button type="submit" >수정</button>
 		
 	</form>

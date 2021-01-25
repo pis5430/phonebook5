@@ -29,7 +29,10 @@
 			<td>${personVo.company}</td>
 		</tr>
 		<tr>
-			<td><a href="${pageContext.request.contextPath}/phone/modifyForm?id=${personVo.person_id}">[수정]</a></td>
+			<td>
+				<a href="${pageContext.request.contextPath}/phone/modifyForm?id=${personVo.person_id}">[수정]</a>
+				<a href="${pageContext.request.contextPath}/phone/modifyForm2?id=${personVo.person_id}">[수정2]</a>
+			</td>
 			
 			<td>
 				<a href="${pageContext.request.contextPath}/phone/delete/${personVo.person_id}">[삭제]</a>
